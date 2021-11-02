@@ -6,20 +6,17 @@ eng_to_morse = {
 }
 
 user_entry = input("Write tekst to convert: ")
-user_entry = user_entry.split()
-
-morse_word = ''
 morse_tekst = ''
 
-for word in user_entry:
-    for letter in word:
-        if letter not in eng_to_morse:
-            print('Data is out of english dictionary!')
-        morse_word = morse_word + ' ' + eng_to_morse[letter]
-    morse_word = morse_word[1:]
-    morse_tekst = morse_tekst + '    ' + morse_word
-    morse_word = ''
+for letter in user_entry:
+    if letter not in eng_to_morse:
+        morse_tekst = ' Data is out of english dictionary!'
+        break
+    elif letter != ' ':
+        morse_tekst = morse_tekst + ' ' + eng_to_morse[letter]
+    else:
+        morse_tekst = morse_tekst + '  '
 
-morse_tekst = morse_tekst[4:]
+morse_tekst = morse_tekst[1:]
 
 print(morse_tekst)
