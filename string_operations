@@ -1,0 +1,31 @@
+# Change size of letters and switch numbers if there is a sting between them.
+
+def StringChallenge(strParam):
+    # code goes here
+    temp = ""
+    is_digit1 = False
+
+    for letter in strParam:
+        if letter.isupper():
+            letter = letter.lower()
+        elif letter.islower():
+            letter = letter.upper()
+        temp = temp + letter
+
+        if letter.isnumeric() and not is_digit1:
+            digit1 = letter
+            is_digit1 = True
+            digit1_index = strParam.index(letter)
+        elif letter.isnumeric() and is_digit1:
+            digit2 = letter
+            digit2_index = strParam.index(letter)
+            temp = temp[:digit1_index] + digit2 + temp[digit1_index + 1:digit2_index] + digit1
+        if letter == " ":
+            is_digit1 = False
+
+    strParam = temp
+    return strParam
+
+
+# keep this function call here
+print(StringChallenge(input()))
