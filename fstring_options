@@ -1,0 +1,33 @@
+import datetime
+
+class MyClass():
+    def __format__(self, format_spec) -> str:
+        print(f"MyClass __format__ called with format: {format_spec!r}")
+        return "MyClass"
+
+
+def equals_in_fstrings():
+    str_digits = 12356
+
+    print(f"{str_digits = }")  # str_digits = 12356
+    print(f"{str_digits * 2 % 5 = }")  # str_digits * 2 % 5 = 2
+
+
+def conversion_in_fstrings():
+    str_text = "Great Text ╝"
+
+    print(f"{str_text}")
+    print(f"{str_text!a}")  # ASCI format: 'Great Text \u255d'
+    print(f"{str_text!r}")  # same as __repr__: 'Great Text ╝'
+
+
+def formatting():
+    some_float = 123.456
+    now = datetime.datetime.now()
+
+    print(f"{now:%Y-%m-%d}")  # datetime formatting
+    print(f"{some_float:.2f}")  # float formatting
+    print(f"{MyClass():Great formatting my frend!}")  # custom formatting
+
+    nested_format = ".1f"
+    print(f"{some_float:{nested_format}}")
